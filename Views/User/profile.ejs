@@ -1,0 +1,22 @@
+<%- include('../Includes/top.ejs') %>
+<%- include('../Includes/navigation.ejs') %>
+
+
+  <div align="center" class="container" style="background-color: rgba(0, 0, 0, 0.751); width: 50%; height: auto; margin-top: 20px; padding: 20px; ">
+    <h1  class="p-3" style="color: aliceblue; margin: 20px;">Welcome</h1>
+    <%- include('../Includes/flash.ejs') %>
+   
+  <%user.forEach(users=> {%>
+
+    <% if(users._id == idUser){ %>   
+    <h4 style="color: aliceblue; margin: 20px; font-weight: bold;"><%=users.username %></h4>
+  <% } %>
+    <%})%>
+    <h5 style="color: aliceblue; font-style: italic; margin-top: 20px;">Step by step you will finish the tasks</h5><br>
+    <h5 style="color: aliceblue; font-style: italic; margin-bottom: 5px;">Step by step you will achieve your goals</h5><br>
+    <form action="/create" method="GET" style="margin: 40px; padding: 20px;">
+<button class="btn btn-primary">Add task</button>
+  </form>
+  </div>
+  
+  <%- include('../Includes/bottom.ejs') %>

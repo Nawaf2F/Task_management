@@ -1,0 +1,23 @@
+<form action="/create" method="POST">
+    <div class="p-5">
+      <label for="title" class="form-label form-control-lg" style="color:aliceblue;">Task title</label>
+      <input type="text" class="form-control" id="title" name="title"placeholder="Enter the task title"><br>
+      
+      <label for="title" class="form-label form-control-lg" style="color:aliceblue;">Description</label>
+      <textarea class="form-control" id="description" name="description" aria-label="With textarea" placeholder="Enter the task description"></textarea><br>
+      
+      <label for="level" class="form-label form-control-lg" style="color:aliceblue;">Priorty Level</label>
+      
+      <select class="form-select" name="level" id="level" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="Critical">Critical</option>
+        <option value="Major">Major</option>
+        <option value="Medium">Medium</option>
+        <option value="Minor">Minor</option>
+      </select>
+        <br>
+      <button type="submit" class="btn btn-primary mb-3">Enter</button>
+    </div>
+  </form>
+</div>
+<br>  
