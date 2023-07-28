@@ -1,0 +1,27 @@
+<%- include('../Includes/top.ejs') %>
+<%- include('../Includes/navigation.ejs') %>
+
+
+<!--Stylings open-->
+<div align="center">
+  
+  <div style="background-color: rgba(0, 0, 0, 0.751); margin: 5%; width: auto; height: auto ; border-radius: 20px;">
+  <h1 class="p-3" style="color: aliceblue;">All Tasks</h1>
+
+
+
+ <% console.log(owners); %>
+ <% console.log(todotasks); %>
+  <%todotasks.forEach(tasks=> {%>
+    
+    <!--view tasks-->
+    <%- include('../CRUD/todoShow.ejs', {tasks:tasks, owners: owners}) %>
+
+    <!--update tasks-->
+    <%- include('./todoUpdateAdmin.ejs',{tasks:tasks}) %>
+    
+    <!--delete tasks-->
+    <%- include('./todoDeleteAdmin.ejs',{tasks:tasks}) %>
+    <%})%>
+
+

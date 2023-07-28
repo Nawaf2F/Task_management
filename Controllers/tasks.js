@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator')
 const Task = require('../Models/tasks')
+const User = require('../Models/users')
 
 module.exports = {
 
@@ -56,6 +57,59 @@ module.exports = {
         Task.deleteOne({_id: req.params.id}, (error)=>{
             if(error) console.log(`There was an error: ${error}`)
             else{res.redirect('/create')}
+        })
+    },
+    admin: function(req, res) {
+        // Get all the tasks from all users
+        Task.find({}, (error, tasks) => {
+          if (error) {
+            console.log(`There was an error: ${error}`);
+          } else {
+            // Get the owners of the tasks
+            User.find({}, (error, users) => {
+              if (error) {
+                console.log(`There was an error: ${error}`);
+              } else {
+                // Create an object to store the owners of the tasks
+                let owners = {};
+      
+                // Add the owners to the object
+                users.forEach((user) => {
+                  owners[user._id] = user;
+                });
+      
+                // Render the template with the tasks and the owners
+                res.render('Admin/todoAdmin.ejs', {
+                  todotasks: tasks,
+                  owners: owners,
+                });
+              }
+            });
+          }
+        });
+      },editAdmin: (req,res)=>{
+        let owners = req.user._id
+        const id = req.params.id
+        Task.find({},(error,tasks)=>{
+            res.render('Admin/todoEditAdmin.ejs',{todotasks: tasks, idTask: id,owners: owners})
+        })
+            },
+    updateAdmin: (req,res)=>{
+        const id = req.params.id
+        Task.findByIdAndUpdate(id, {
+            title: req.body.title,
+            description: req.body.description,
+            level: req.body.level,
+           }, error=>{
+            if(error) return res.send(500,error)
+            else res.redirect('/admin')
+        })
+    
+     },
+     deleteAdmin: (req,res)=>{
+        Task.deleteOne({_id: req.params.id}, (error)=>{
+            if(error) console.log(`There was an error: ${error}`)
+            else{res.redirect('/admin')}
         })
     }
 }

@@ -12,7 +12,7 @@
  
   <%todotasks.forEach(tasks=> {%>
     <%if(owners.equals( tasks.owner)){  %>
-    <!--view tasks-->
+      <!--view tasks-->
     <%- include('./todoShow.ejs', {tasks:tasks, owners: owners}) %>
 
     <!--update tasks-->
@@ -21,6 +21,7 @@
     <!--delete tasks-->
     <%- include('./todoDelete.ejs',{tasks:tasks}) %>
     <% } %>
+    
     <%})%>
 
 

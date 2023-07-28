@@ -10,13 +10,15 @@ module.exports = {
 
 
     signup:(req,res)=> {
+        const username = req.body.username
+        const password = req.body.password
         res.render('User/signup', {error: req.flash('error')})
     },
 
     signupReq: (req, res)=> {
-        let username = req.body.username
-        let password = req.body.password
-    
+        const username = req.body.username
+        const password = req.body.password
+        
         User.register(new User({ username: username }), password, 
             function (err, user) {
                 if (err) {

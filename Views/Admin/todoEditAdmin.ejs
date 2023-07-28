@@ -1,0 +1,58 @@
+<%- include('../Includes/top.ejs') %>
+<%- include('../Includes/navigation.ejs') %>
+
+
+<!--Stylings open-->
+<div align="center">
+  <div style="background-color: rgba(0, 0, 0, 0.751); margin-top: 5%; width: 700px; height: auto ; border-radius: 20px;">
+    <h1 class="p-3" style="color: aliceblue;">All Tasks</h1>
+
+<!--edit tasks-->
+
+<%todotasks.forEach(tasks => {%>
+    
+    <% if(tasks._id == idTask){%>
+    
+          <div class="card" style="width: 18rem; display: inline-block; margin: 6px; background-color: rgba(240, 248, 255, 0.759);">
+              <div class="card-body">
+                  <form action="/updateAdmin/<%=tasks._id%>?_method=PUT" method="POST">
+                  <h5 class="card-title" style="padding: 5px; background-color: rgba(0, 0, 0, 0.751); color: aliceblue;"><input type="text" placeholder="<%=tasks.title%>" value="<%=tasks.title%>" name="title"></h5>
+          
+                  <p class="card-text"><textarea class="form-control" id="description" name="description" aria-label="With textarea" placeholder="<%=tasks.description%>" value="<%=tasks.description%>"></textarea></p><br>
+                    
+                    
+                  <p class="card-text">          
+                    <select class="form-select" name="level" id="level" aria-label="Default select example">
+                      <option selected>Open this select menu</option>
+                      <option value="Critical">Critical</option>
+                      <option value="Major">Major</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Minor">Minor</option>
+                    </select>
+                  </p>
+                  <br>
+            
+              <button type="submit" class="btn btn-primary p-1 mb-1">Save</button>
+              <a href="/admin" class="btn btn-danger p-1 mb-1"> cancel</a>
+          </form>
+          </div>
+      </div>
+          
+        
+  
+      <% }else{%> 
+      <!--view tasks-->
+      <%- include('../CRUD/todoShow.ejs', {tasks:tasks,owners: owners}) %>
+  
+      <!--update tasks-->
+      <%- include('./todoUpdateAdmin.ejs',{tasks:tasks}) %>
+      
+      <!--delete tasks-->
+      <%- include('./todoDeleteAdmin.ejs',{tasks:tasks}) %>
+  
+   
+    <% } %>
+    <%})%>
+  
+
+ 

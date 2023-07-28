@@ -39,18 +39,23 @@ cookie: {maxAge: 60000 * 15}
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStrategy(User.authenticate()))
+//passport local strategy
+passport.use(new LocalStrategy(User.authenticate(), {
+    model: User
+}));
+
+//passport serialize and deserialize
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+// flash
 app.use(flash())
 
 // middleware router
 app.use('/',tasks)
 
 // bring tasks routes
-app.use('/tasks', tasks)
+//app.use('/tasks', tasks)
 
 // bring user routes
 app.use('/users', users)

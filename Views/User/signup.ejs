@@ -2,36 +2,40 @@
 
 
 
-  <div align="center" class="container" style="background-color: rgba(0, 0, 0, 0.751); width: 50%; height: auto; margin-top: 60px; padding: 20px; ">
-    <h1  class="p-3" style="color: aliceblue; margin: 20px;">Sign UP</h1>
+  <div align="center" class="container"
+    style="background-color: rgba(0, 0, 0, 0.751); width: 50%; height: auto; margin-top: 60px; padding: 20px; ">
+    <h1 class="p-3" style="color: aliceblue; margin: 20px;">Sign UP</h1>
     <hr>
     <%- include('../Includes/flash.ejs') %>
-    
+
       <!--signup-->
       <form action="/users/signup" method="POST" style="margin: 40px; padding: 20px;">
-       
+
         <!--username-->
         <div style="color: aliceblue;" class="row mb-3">
           <label for="username" class="col-sm-2 col-form-label">Username</label>
           <div class="col-sm-10">
-        <input type="text" name="username" class="form-control" placeholder="username">
-      </div>
-    </div>
-
-          
-        <!--Password-->
-          <div style="color: aliceblue;" class="row mb-3">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-              <input type="password" name="password" class="form-control" id="inputPassword3">
-            </div>
+            <input type="text" id="username" name="username" class="form-control" placeholder="username"
+              autocomplete="username">
           </div>
-          <br>
-          <button class="btn btn-primary">Submit</button>
+        </div>
+
+
+        <!--Password-->
+        <div style="color: aliceblue;" class="row mb-3">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" name="password" class="form-control" id="inputPassword3">
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-      
+
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-</body>
-  
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  </body>
+
+  </html>
